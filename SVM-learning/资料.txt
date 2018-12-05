@@ -1,0 +1,12 @@
+资料.txt
+
+刘建平讲 SVM 的文章
+
+支持向量机原理(一) 线性支持向量机
+https://www.cnblogs.com/pinard/p/6097604.html
+
+scikit-learn 支持向量机算法库使用小结
+https://www.cnblogs.com/pinard/p/6117515.html
+
+支持向量机高斯核调参小结
+https://www.cnblogs.com/pinard/p/6126077.html

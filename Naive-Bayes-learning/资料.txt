@@ -1,0 +1,14 @@
+资料.txt
+
+朴素贝叶斯理论推导与三种常见模型
+http://wepon.me/2015/09/09/naive-bayes/
+说明：wepon 据说是个大神，他的文章要好好看看。
+
+
+我买的书黄永昌的博客：
+
+零基础学习朴素贝叶斯算法
+http://blog.kamidox.com/naive-bayes.html
+
+黄永昌的简书：
+https://www.jianshu.com/p/770a315d818d?utm_campaign=maleskine&utm_content=note&utm_medium=seo_notes&utm_source=recommendation

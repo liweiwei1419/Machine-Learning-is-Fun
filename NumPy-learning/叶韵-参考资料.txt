@@ -1,0 +1,5 @@
+给深度学习入门者的Python快速教程 - 基础篇
+https://zhuanlan.zhihu.com/p/24162430
+
+给深度学习入门者的Python快速教程 - numpy和Matplotlib篇
+https://zhuanlan.zhihu.com/p/24309547

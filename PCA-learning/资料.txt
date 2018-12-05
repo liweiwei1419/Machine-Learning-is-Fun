@@ -1,0 +1,17 @@
+白马负金羁
+https://blog.csdn.net/baimafujinji/article/details/79376378
+
+
+核 PCA 与 PCA 的精髓和核函数的映射实质
+https://blog.csdn.net/qianhen123/article/details/40863753
+
+PCA 和核 PCA
+https://blog.csdn.net/whitesilence/article/details/50999378
+
+核主成分分析（Kernel-PCA）
+https://blog.csdn.net/zhangping1987/article/details/30492433
+
+
+解释一下核主成分分析(Kernel Principal Component Analysis, KPCA)的公式推导过程~
+
+https://blog.csdn.net/wsj998689aa/article/details/40398777

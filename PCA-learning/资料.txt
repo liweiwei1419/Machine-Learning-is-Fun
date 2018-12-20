@@ -15,3 +15,15 @@ https://blog.csdn.net/zhangping1987/article/details/30492433
 解释一下核主成分分析(Kernel Principal Component Analysis, KPCA)的公式推导过程~
 
 https://blog.csdn.net/wsj998689aa/article/details/40398777
+
+
+
+皮果提的文章：UFLDL 教程学习笔记（四）主成分分析
+https://blog.csdn.net/itplus/article/details/11451327
+
+皮果提的文章：关于协方差矩阵的理解
+https://blog.csdn.net/itplus/article/details/11452743
+
+
+机器学习算法笔记系列之深入理解主成分分析PCA-原理篇
+https://blog.csdn.net/ShiZhixin/article/details/51181379

@@ -1,0 +1,12 @@
+From: kbw@helios.ath.epa.gov (Kevin B. Weinrich)
+Subject: Solution: Why do I need "xrdb -m" when .Xdefaults unchanged?
+
+The short answer seems to be: "I don't".
+The particular package (wscrawl) seems to reset *all* its defaults
+if *any* of them are missing from the .Xdefaults file.  Once I added
+the missing ones to the .Xdefaults file, the problem goes away.
+
+-Kevin
+-- 
+Kevin Weinrich     Computer Sciences Corp.
+kbw@helios.ath.epa.gov

@@ -1,0 +1,11 @@
+From: sahr@piglet.uccs.edu (Kevin Sahr)
+Subject: Looking for polygon "convexifier"
+
+Does anyone know where I can find a code which would take concave
+polygons and break them up into a set of convex polygons?
+
+Thanks,
+
+Kevin
+sahr@piglet.uccs.edu
+

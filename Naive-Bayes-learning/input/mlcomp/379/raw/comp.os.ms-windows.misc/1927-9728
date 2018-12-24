@@ -1,0 +1,15 @@
+From: cca20@keele.ac.uk (J. Atherton)
+Subject: serial printing in Windows
+
+I am getting Garbled output when serial printing thru Windows & works
+etc.  This has occurred on several systems and goes if a LaserJet 4 is
+used.  I suspect that there is no need for handshaking in this case due
+to the capacity (memory/speed) of it.  There is no problem printing from
+DOS.  Are there any obvious tweaks I'm missing.  I'm sure its not JUST
+me with this problem.  Thanks for reading....  John Atherton
+
+
+
+
+
+

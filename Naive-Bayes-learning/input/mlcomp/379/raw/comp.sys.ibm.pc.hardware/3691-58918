@@ -1,0 +1,10 @@
+From: dfr@ioc.co.uk (Doug Rabson)
+Subject: VESA local bus
+
+Is it possible to plug an ordinary ISA card into a VESA localbus slot?
+I am running out of slots and I have one spare localbus slot.
+
+--
+Doug Rabson, IOC Ltd.	| Email:  dfr@ioc.co.uk
+Phone: +44 81 528 9864	|	  drabson@cix.compulink.co.uk
+Fax:   +44 81 528 9878	|	  

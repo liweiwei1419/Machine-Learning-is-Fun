@@ -1,0 +1,6 @@
+From: jws@fc.hp.com (John Schmidt)
+Subject: Re: Quantum LPS240A hard disk phantom seeks
+
+This is normal behavior for these drives (and many other models). The drive
+is doing a recalibration -- adjusting for temperature changes. If you leave
+the machine on the frequency of the recalibrations goes way down.

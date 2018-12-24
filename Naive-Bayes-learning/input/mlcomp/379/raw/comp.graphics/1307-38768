@@ -1,0 +1,16 @@
+From: beck@irzr17.inf.tu-dresden.de (Andre Beck)
+Subject: Re: Pov-ray problem / Please Help...
+
+
+what about
+
+qrttoppm < file.dis | ppmtotga > file.tga
+
+??
+
+--
++-o-+--------------------------------------------------------------+-o-+
+| o |                \\\-  Brain Inside -///                       | o |
+| o |                    ^^^^^^^^^^^^^^^                           | o |
+| o | Andre' Beck (ABPSoft) mehl: Andre_Beck@IRS.Inf.TU-Dresden.de | o |
++-o-+--------------------------------------------------------------+-o-+

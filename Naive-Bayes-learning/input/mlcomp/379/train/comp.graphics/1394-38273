@@ -1,0 +1,13 @@
+From: kshin@stein.u.washington.edu (Kevin Shin)
+Subject: thinning algorithm
+
+Hi, netters
+
+I am looking for source code that can reads the ascii file
+or bitmap file and produced the thinned image.
+For example, to preprocess the character image I want to
+apply thinning algorithm.
+
+thanks
+kevin
+.

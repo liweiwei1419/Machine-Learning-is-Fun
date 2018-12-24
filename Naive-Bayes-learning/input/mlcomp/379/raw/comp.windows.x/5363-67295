@@ -1,0 +1,18 @@
+From: mahan@TGV.COM (Patrick L. Mahan)
+Subject: Re: Tektronix
+
+#
+# I remember seeing something in the X distribution mentioning support
+# for a Tektronix terminal in an X server.  Is this accurate? 
+#
+
+Xterm supports 401x emulation.
+
+
+Patrick L. Mahan
+
+--- TGV Window Washer ------------------------------- Mahan@TGV.COM ---------
+
+Waking a person unnecessarily should not be considered  - Lazarus Long
+a capital crime.  For a first offense, that is            From the Notebooks of
+							  Lazarus Long

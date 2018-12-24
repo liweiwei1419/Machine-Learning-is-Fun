@@ -1,0 +1,9 @@
+From: hofkin@software.org (Bob Hofkin)
+Subject: Re: ATI build 59 drivers "good"?
+
+Build 59 causes 2 exceptions when I exit Windows. In fact, I have had
+this happen on all builds after 44, which shipped with my Gateway
+system.  Am I doing something wrong, or is this problem commonly
+overlooked?
+
+Bob Hofkin

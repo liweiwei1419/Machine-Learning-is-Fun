@@ -1,0 +1,3 @@
+name: 20news-18828
+description: 20 newsgroups dataset for document classification (http://people.csail.mit.edu/jrennie/20Newsgroups)
+format: DocumentClassification

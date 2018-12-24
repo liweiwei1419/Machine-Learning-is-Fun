@@ -1,0 +1,13 @@
+From: ravin@eecg.toronto.edu (Govindan Ravindran)
+Subject: decoupling caps - onboard
+
+(posted for a friend)
+hello there,
+        I would like to know if any one had any experience with having
+on-board decoupling capacitors (inside a cmos chip) for the power
+lines. Say I have a lot of space left im my pad limited design.
+any data on the effect of oxide breakdown? any info or pointers
+are appreciated.
+
+rs
+

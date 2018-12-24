@@ -1,0 +1,13 @@
+From: Jay Fenton <Fenton@Kaleida.Com>
+Subject: How to detect use of an illegal cipher?
+
+How can the government tell which encryption method one is using without
+being able to decode the traffic? i.e., In order to accuse me of using an
+unauthorized strong encryption technique they would have to take both
+keys out of escrow, run them against my ciphertext and "draw a blank".
+
+I can imagine the ciphertext exhibiting certain statistical
+characteristics that might give a clue as to the encryption technique
+used, but not enough to give a handle for diferential cryptoanalysis.
+However, superencipherment or some other scheme that shapes the percieved
+properties of my ciphertext could thwart this.

@@ -1,0 +1,9 @@
+From: pauls@trsvax.tandy.com
+Subject: Re: Need Info on DSP project
+
+
+Motorola has a good app note on a 10 band equalizer using a 56000 DSP. It
+could be easily ported to an Ariel board, or even a Turtle Beach 56K
+development system.
+
+

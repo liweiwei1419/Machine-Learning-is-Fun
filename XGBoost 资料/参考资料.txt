@@ -1,0 +1,68 @@
+## 外国人的 GitHub xgboost docker 资源
+
+https://github.com/ParrotPrediction/docker-course-xgboost
+
+https://github.com/ParrotPrediction/docker-course-xgboost
+
+https://github.com/ParrotPrediction/docker-course-xgboost
+
+
+
+通俗、有逻辑的写一篇说下Xgboost的原理，供讨论参考
+https://blog.csdn.net/github_38414650/article/details/76061893
+说明：讲了比较多思想方面的东西，可以多看几遍。
+
+
+Machine Learning笔记 - XGBOOST 教程
+http://codewithzhangyi.com/2018/06/01/XGBOOST%E4%BD%BF%E7%94%A8%E8%AF%B4%E6%98%8E/
+说明：我看这篇文章写的笔记，后面还介绍了调参的技巧。这篇博客的风格很不错，文章看起来很舒服。
+
+
+
+[資料分析&機器學習] 第5.2講: Kaggle機器學習競賽神器XGBoost介紹
+https://medium.com/@yehjames/%E8%B3%87%E6%96%99%E5%88%86%E6%9E%90-%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92-%E7%AC%AC5-2%E8%AC%9B-kaggle%E6%A9%9F%E5%99%A8%E5%AD%B8%E7%BF%92%E7%AB%B6%E8%B3%BD%E7%A5%9E%E5%99%A8xgboost%E4%BB%8B%E7%B4%B9-1c8f55cffcc
+说明：台湾人写的文章，其实是一个系列的一部分，他把 Jupyter Notebook 放在了 Gist 上面，还是蛮有意思的。
+
+
+xgboost入门与实战（实战调参篇）
+https://blog.csdn.net/sb19931201/article/details/52577592
+
+
+XGBoost的原理
+http://djjowfy.com/2017/08/01/XGBoost%E7%9A%84%E5%8E%9F%E7%90%86/
+更详细地讲解了 ppt，并且还介绍了近似算法，还有参数的使用。
+
+
+
+机器学习：原理简明教程16-XGBoost
+http://www.bdpt.net/cn/2017/06/30/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%EF%BC%9A%E5%8E%9F%E7%90%86%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B16-xgboost/
+说明：这篇文章具体解释了陈天奇的 ppt。
+
+
+机器学习：原理简明教程15-GBDT
+http://www.bdpt.net/cn/2017/06/28/%E6%9C%BA%E5%99%A8%E5%AD%A6%E4%B9%A0%EF%BC%9A%E5%8E%9F%E7%90%86%E7%AE%80%E6%98%8E%E6%95%99%E7%A8%8B15-gbdt/
+说明：使用具体的例子讲解了梯度提升树。
+重点摘抄：1、GBDT 中的树是回归树（不是分类树），这样加减才有意义，GBDT 用来做回归预测，调整后也可以用于分类。
+2、残差的意思就是： 预测值 + 残差 = 实际值
+3、Shrinkage ：Shrinkage（缩减）的思想认为，每次走一小步逐渐逼近结果的效果，要比每次迈一大步很快逼近结果的方式更容易避免过拟合。即它不完全信任每一个棵残差树，它认为每棵树只学到了真理的一小部分，累加的时候只累加一小部分，通过多学几棵树弥补不足。
+
+
+xgboost: 速度快效果好的 boosting 模型
+https://cosx.org/2015/03/xgboost/
+说明：用的 R，不过介绍了思想，还有陈天奇的主页。
+
+
+xgboost简易教程：
+http://shujuren.org/article/505.html
+说明：和 scikit-learn 一样，无差别使用。
+
+
+
+官方参数介绍看这里： 
+Parameters (official guide)
+
+General Parameters（常规参数） 
+1. [default=gbtree]：
+2. [default=0]:
+3.nthread [default to maximum number of threads available if not set]：线程数
+

@@ -1,0 +1,7 @@
+关于 SVD 的系列文章
+作者：Ling 之博客。
+http://www.bdpt.net/cn/tag/svd/
+
+
+概率隐语义分析和奇异值分解
+http://blog.sciencenet.cn/blog-520608-740657.html

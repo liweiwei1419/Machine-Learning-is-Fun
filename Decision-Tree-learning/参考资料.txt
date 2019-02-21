@@ -1,7 +1,0 @@
-参考资料.txt
-随机森林模型调参方法
-https://blog.csdn.net/Caesar1993_Wang/article/details/80337103
-
-
-GBDT：梯度提升决策树
-https://www.jianshu.com/p/005a4e6ac775

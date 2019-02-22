@@ -1,7 +1,6 @@
 from collections import defaultdict
 
 
-
 class Apriori:
     def __init__(self, min_support=0.5, min_conf=0.7):
         self.min_support = min_support
@@ -162,14 +161,16 @@ class Apriori:
                     # print('H1',H1)
                     # 当项集的个数为 3 的时候，走这个分支，所以写在前面
                     # 根据当前候选规则集 H 生成下一层候选规则集
-                    self.rules_from_conseq(freq_set, H1, support_data, big_rule_list)
+                    self.rules_from_conseq(
+                        freq_set, H1, support_data, big_rule_list)
 
                 else:
                     # print('H1',H1)
 
                     # 当项集的个数只有 2 的时候，走这一支，其余情况走上一个分支
                     # 只计算置信度
-                    self.calc_confidence(freq_set, H1, support_data, big_rule_list)
+                    self.calc_confidence(
+                        freq_set, H1, support_data, big_rule_list)
         return big_rule_list
 
     # 生成关联规则的主函数(正确的逻辑)
@@ -179,7 +180,8 @@ class Apriori:
             for freq_set in L[i]:
                 H1 = [frozenset([item]) for item in freq_set]
                 print('H1\t\t', H1, 'freq_set', freq_set)
-                self.rules_from_conseq_right(freq_set, H1, support_data, big_rule_list)
+                self.rules_from_conseq_right(
+                    freq_set, H1, support_data, big_rule_list)
         return big_rule_list
 
     def rules_from_conseq_right(self, freq_set, H, support_data, brl):

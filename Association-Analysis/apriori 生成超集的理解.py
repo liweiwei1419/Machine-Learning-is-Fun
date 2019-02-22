@@ -21,15 +21,15 @@ def apriori_gen(frequent_set_k, k):
 
 
 #
-# L0 = [{0}, {1}, {2}, {3}]
-# print(apriori_gen(L0, 2))
+L0 = [{0}, {1}, {2}, {3}]
+print(apriori_gen(L0, 2))
 print('-' * 20)
 
-# L1 = [{0, 1}, {0, 2}, {0, 3}, {1, 2}, {1, 3}, {2, 3}]
-# print(apriori_gen(L1, 3))
-#
-# L2 = [{0, 1, 2}, {0, 1, 3}, {0, 2, 3}, {1, 2, 3}]
-# print(apriori_gen(L2, 4))
+L1 = [{0, 1}, {0, 2}, {0, 3}, {1, 2}, {1, 3}, {2, 3}]
+print(apriori_gen(L1, 3))
+
+L2 = [{0, 1, 2}, {0, 1, 3}, {0, 2, 3}, {1, 2, 3}]
+print(apriori_gen(L2, 4))
 
 L2 = [{5, 3}, {5, 10}]
 print(apriori_gen(L2, 3))

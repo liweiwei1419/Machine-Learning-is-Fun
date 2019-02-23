@@ -1,4 +1,2 @@
 资料.txt
 
-收藏 | Numpy详细教程
-https://mp.weixin.qq.com/s/O6QImoNLHg5j89Nrargq2A

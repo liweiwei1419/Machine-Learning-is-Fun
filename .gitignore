@@ -4,4 +4,6 @@
 */__pycache__/
 Reference-Books/黄永昌《scikit-learn 机器学习》/datasets/mlcomp/379/
 Reference-Books/黄永昌《scikit-learn 机器学习》/datasets/clustering/
-
+Kaggle-in-Action/*/input/
+Kaggle-in-Action/*/output/
+Kaggle-in-Action/others/

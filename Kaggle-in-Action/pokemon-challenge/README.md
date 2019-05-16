@@ -40,12 +40,6 @@ data1.plot(subplots=True)
 plt.show()
 ```
 
-热力图
-
-```python
-
-```
-
 ### 一个星号和两个星号
 
 ```python

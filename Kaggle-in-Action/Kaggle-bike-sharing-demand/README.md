@@ -106,7 +106,7 @@ $$
 
 2、分离训练数据与测试数据
 
-```python
+```{.python .input}
 train = data.iloc[:10886]
 test = data.iloc[10886:]
 ```

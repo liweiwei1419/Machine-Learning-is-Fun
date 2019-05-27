@@ -1,4 +1,18 @@
+# Titanic: Machine Learning from Disaster
 
+
+
+在 scikit-learn 
+
+很多数据分析、机器学习的初学者，Kaggle 上有很多竞赛和数据，提供给
+
+
+
+电影《泰坦尼克号》相信很多人都看过。
+
+
+
+练习赛主页：https://www.kaggle.com/c/titanic
 
 | 序号 | 英文变量名  | 中文变量名            | 说明                                |
 | ---- | ----------- | --------------------- | ----------------------------------- |
@@ -14,11 +28,17 @@
 | 10   | Cabin       | 客舱号                | C85、C123 这样的                    |
 | 11   | Embarked    | 登船港口              | 类别变量，只有 “S”、“C”、“Q” 三个值 |
 
-###  参考资料
+##  参考资料
+
+1、
+
+https://ahmedbesbes.com/how-to-score-08134-in-titanic-kaggle-challenge.html)。
+
+
+
+
 
 https://www.kaggle.com/startupsci/titanic-data-science-solutions
-
-
 
 
 

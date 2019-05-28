@@ -8,19 +8,17 @@ Kaggle 上的竞赛和数据来自科研机构和大型企业，随着 Kaggle �
 
 [“泰坦尼克号幸存者预测”](https://www.kaggle.com/c/titanic)是 Kaggle 上著名的初学者练习赛，是一个二分类问题，长年对用户开放，是数据科学小白的“Hello World”。任务很简单，提供了泰坦尼克当时船员的数据，一共包含 891 个训练样本和 418 个测试样本，要求参赛者使用 891 个样本训练模型，以预测 418 个测试样本幸存与否，其中 1 表示幸存（Survived），0 表示罹。
 
-本文完整的源代码可以在我的 [GitHub]([https://github.com/liweiwei1419/Machine-Learning-is-Fun/blob/master/Kaggle-in-Action/titanic/notebook/Random-Forest-in-Titanic-Kaggle-Challenge.ipynb](https://github.com/liweiwei1419/Machine-Learning-is-Fun/blob/master/Kaggle-in-Action/titanic/notebook/Random-Forest-in-Titanic-Kaggle-Challenge.ipynb)
-) 上查看，notebook 渲染慢的话，还可以在 [nbviewer]([https://nbviewer.jupyter.org/github/liweiwei1419/Machine-Learning-is-Fun/blob/master/Kaggle-in-Action/titanic/notebook/Random-Forest-in-Titanic-Kaggle-Challenge.ipynb](https://nbviewer.jupyter.org/github/liweiwei1419/Machine-Learning-is-Fun/blob/master/Kaggle-in-Action/titanic/notebook/Random-Forest-in-Titanic-Kaggle-Challenge.ipynb)
-) 里查看，下面只是展示了部分关键思路，欢迎大家批评与指正。
+本文完整的源代码可以在我的 [GitHub](https://github.com/liweiwei1419/Machine-Learning-is-Fun/blob/master/Kaggle-in-Action/titanic/notebook/Random-Forest-in-Titanic-Kaggle-Challenge.ipynb) 上查看，notebook 渲染慢的话，还可以在 [nbviewer](https://nbviewer.jupyter.org/github/liweiwei1419/Machine-Learning-is-Fun/blob/master/Kaggle-in-Action/titanic/notebook/Random-Forest-in-Titanic-Kaggle-Challenge.ipynb) 上查看，下面只是展示了部分关键思路，欢迎大家批评与指正。
 
 下面是关于整个项目的工作流程。
 
 ## 工作流程
 
-![泰坦尼克号幸存者预测.png](https://upload-images.jianshu.io/upload_images/414598-d2bd9d7f09fc1497.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![泰坦尼克号幸存者预测工作流程](https://liweiwei1419.github.io/images/kaggle/titanic/%E6%B3%B0%E5%9D%A6%E5%B0%BC%E5%85%8B%E5%8F%B7%E5%B9%B8%E5%AD%98%E8%80%85%E9%A2%84%E6%B5%8B%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B.png)
 
 ### 1、分析需求
 
-![image.png](https://upload-images.jianshu.io/upload_images/414598-cfb0174b5dfd3d5e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![分析需求](https://liweiwei1419.github.io/images/kaggle/titanic/step-1.png)
 
 
 这一步我们要做的是下载数据，并且熟悉各个字段的含义，知道目标变量的含义，预测任务是分类还是回归。如果字段不多，并且没有脱敏处理的话，不妨列一个表格，以便于我们更深刻地理解问题。
@@ -41,9 +39,10 @@ Kaggle 上的竞赛和数据来自科研机构和大型企业，随着 Kaggle �
 | 10   | Cabin       | 客舱                                 | 离散型 | 缺失值较多           |
 | 11   | Embarked    | 登船港口                             | 离散型 |                      |
 
-这一步我们还要关注的一点是**评价指标**。评价指标往往关系着我们在使用**网格搜索**的时候最优超参数的选择。
+这一步我们还要关注的一点是**评价指标**。评价指标往往关系着我们在使用**网格搜索**的时候最优超参数的选择。先把下面的代码写上：
 
-先把下面的代码写上：
+Python 代码：
+
 ```python
 import numpy as np
 import pandas as pd
@@ -56,21 +55,21 @@ print(os.listdir("../input"))
 
 然后看看数据长什么样。
 
-![image.png](https://upload-images.jianshu.io/upload_images/414598-a289f7c22416a9b0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![kaggle-in-action-titanic-1](https://liweiwei1419.github.io/images/kaggle/titanic/1.png)
 
 下面的方法也是很常用的，看一看数据的数量、类型以及缺失值。
 
-![image.png](https://upload-images.jianshu.io/upload_images/414598-c5e813e6e701c827.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![kaggle-in-action-titanic-2](https://liweiwei1419.github.io/images/kaggle/titanic/2.png)
 
 `DataFrame` 的 `describe()` 方法可以快速预览一些连续型变量的统计量。
 
-![image.png](https://upload-images.jianshu.io/upload_images/414598-e6c1dbae18341067.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![kaggle-in-action-titanic-3](https://liweiwei1419.github.io/images/kaggle/titanic/3.png)
 
 数据的概览基本就到这里了，下面就要做一些数据可视化，进而帮助我们理解数据。
 
 ### 2、探索性数据分析
 
-![image.png](https://upload-images.jianshu.io/upload_images/414598-7c1fcbf3a95ee426.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![探索性数据分析](https://liweiwei1419.github.io/images/kaggle/titanic/step-2.png)
 
 
 这一步我们分析各个特征对于目标变量 Survived 的影响。对于特征而言，我们首先关注它是离散型变量还是连续型变量。
@@ -79,15 +78,15 @@ print(os.listdir("../input"))
 
 这里以 Sex 变量为例。
 
-![image.png](https://upload-images.jianshu.io/upload_images/414598-f87d96a35ca2f4b9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![kaggle-in-action-titanic-4](https://liweiwei1419.github.io/images/kaggle/titanic/4.png)
 
 从图中可以看出，男士遇难的人数远超过女士，这也符合“泰坦尼克号”电影中船长决定女士和小孩优先上救生艇的事实。从统计学角度来看，就可以使用“卡方检验”来验证这个结论，首先我们得到列联表。
 
-![image.png](https://upload-images.jianshu.io/upload_images/414598-fe37f82b000d1bf1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![kaggle-in-action-titanic-5](https://liweiwei1419.github.io/images/kaggle/titanic/5.png)
 
 进而计算卡方分布的 p 值，此时自由度为 $1$。
 
-![image.png](https://upload-images.jianshu.io/upload_images/414598-4a7a33368fa8d7c4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![kaggle-in-action-titanic-6](https://liweiwei1419.github.io/images/kaggle/titanic/6.png)
 
 可以看到 $p$ 值为 $1.1973570627755645e-58$，远小于 $0.05$，因此“性别”和“幸存”的确不是独立的，“性别”是一项预测“是否幸存”的重要特征。
 
@@ -98,24 +97,24 @@ print(os.listdir("../input"))
 
 （1）Age 
 
-![image.png](https://upload-images.jianshu.io/upload_images/414598-d57916c63738dc19.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![kaggle-in-action-titanic-7](https://liweiwei1419.github.io/images/kaggle/titanic/7.png)
 
 可以看出，年轻人幸存较多。
 
 （2）Fare
 
-![image.png](https://upload-images.jianshu.io/upload_images/414598-ba49f12b15d84489.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![kaggle-in-action-titanic-8](https://liweiwei1419.github.io/images/kaggle/titanic/8.png)
 
 可以看出，票价比较低的，遇难的人数比较多，因此票价是一个重要的特征。
 
 ### 3、特征工程
 
-![image.png](https://upload-images.jianshu.io/upload_images/414598-0292cf8fadff320f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![特征工程](https://liweiwei1419.github.io/images/kaggle/titanic/step-3.png)
 
 
 其实以上等于什么都没有做，数据还是原始数据。接下来合并训练数据和测试数据，分离出目标变量和测试数据的 ID，具体如下。
 
-![image.png](https://upload-images.jianshu.io/upload_images/414598-10b3cb14eade824b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![kaggle-in-action-titanic-9](https://liweiwei1419.github.io/images/kaggle/titanic/9.png)
 
 
 下面就得“动真格”了，主要干的事情有：
@@ -125,25 +124,25 @@ print(os.listdir("../input"))
 
 本例中 Age 变量的缺失值填充根据 Sex、Pclass 和 Title 分组，如果落在相同的组别里，就用这个组别的平均数填充。
 
-![image.png](https://upload-images.jianshu.io/upload_images/414598-6d4ad160939cf415.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![kaggle-in-action-titanic-10](https://liweiwei1419.github.io/images/kaggle/titanic/10.png)
 
-![image.png](https://upload-images.jianshu.io/upload_images/414598-f30b700a04469d77.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![kaggle-in-action-titanic-11](https://liweiwei1419.github.io/images/kaggle/titanic/11.png)
 
 （2）特征抽取
 
 如果数据是文本类型的，一般要做特征抽取，因为绝大多数机器学习算法是不能直接输入文本的。例如本例中可以根据 Name 字段抽取每个人的社会地位，具体代码如下：
 
-![image.png](https://upload-images.jianshu.io/upload_images/414598-7d74343adb849dbb.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![kaggle-in-action-titanic-12](https://liweiwei1419.github.io/images/kaggle/titanic/12.png)
 
-![image.png](https://upload-images.jianshu.io/upload_images/414598-d1b406e52a085cbe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![kaggle-in-action-titanic-13](https://liweiwei1419.github.io/images/kaggle/titanic/13.png)
 
-![image.png](https://upload-images.jianshu.io/upload_images/414598-1c09c119dae250d6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![kaggle-in-action-titanic-14](https://liweiwei1419.github.io/images/kaggle/titanic/14.png)
 
 上面的代码可以简单总结为“合并同类项”。接着就要进行独热编码了，即将多分类变量转换为二分类变量。这一步我们放在最后和其它离散型变量一起进行独热编码。
 
 还可以抽取的变量有“家庭人数”。
 
-![image.png](https://upload-images.jianshu.io/upload_images/414598-ed9376ea44ffe8cd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![kaggle-in-action-titanic-15](https://liweiwei1419.github.io/images/kaggle/titanic/15.png)
 
 
 （3）连续型变量分箱处理成离散型变量
@@ -152,24 +151,24 @@ print(os.listdir("../input"))
 
 这里我们对“Age”和“家庭人数”进行分箱处理。
 
-![image.png](https://upload-images.jianshu.io/upload_images/414598-06d2953e91a21af2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![kaggle-in-action-titanic-16](https://liweiwei1419.github.io/images/kaggle/titanic/16.png)
 
-![image.png](https://upload-images.jianshu.io/upload_images/414598-bd962a37f8cb117b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![kaggle-in-action-titanic-17](https://liweiwei1419.github.io/images/kaggle/titanic/17.png)
 
 最后做离散型变量的独热编码，并且分离出训练数据集和测试数据集：
 
-![image.png](https://upload-images.jianshu.io/upload_images/414598-0efe2ca5919323bd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![kaggle-in-action-titanic-18](https://liweiwei1419.github.io/images/kaggle/titanic/18.png)
 
 我们看一眼数据：
 
-![image.png](https://upload-images.jianshu.io/upload_images/414598-88901cb0d1d178bc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![kaggle-in-action-titanic-19](https://liweiwei1419.github.io/images/kaggle/titanic/19.png)
 
 
 到目前为止训练数据集和测试数据集都是“规规整整”的数值了，可以送入机器学习算法了。
 
 ### 4、模型训练与评估
 
-![image.png](https://upload-images.jianshu.io/upload_images/414598-312256c89fddfb20.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![模型训练与评估](https://liweiwei1419.github.io/images/kaggle/titanic/step-4.png)
 
 （1）使用集成学习方法
 
@@ -186,6 +185,8 @@ print(os.listdir("../input"))
 （2）网格搜索
 
 网格搜索是提高算法有效性的重要手段，得凭一些经验，多进行尝试。**由于网格搜索比较耗时，因此可以设置一个开关，把网格搜索的结果写在另一个分支里，重新执行代码的时候就不用重新训练了，直接使用最佳超参数就好**。
+
+Python 代码：
 
 ```python
 %%time
@@ -237,10 +238,11 @@ model = RandomForestClassifier(**parameters)
 model.fit(X_train, y)
 ```
 
-![image.png](https://upload-images.jianshu.io/upload_images/414598-1b1280f28de1ee54.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
-
+![kaggle-in-action-titanic-20](https://liweiwei1419.github.io/images/kaggle/titanic/20.png)
 
 ### 5、预测并提交
+
+Python 代码：
 
 ```python
 y_pred = model.predict(X_test)
@@ -249,14 +251,14 @@ res.to_csv('../output/gridsearch_rf_2019_05_27.csv', index=False)
 ```
 提交结果：
 
-![随机森林+网格搜索的提交结果](https://upload-images.jianshu.io/upload_images/414598-2136ff63ba3dc0a7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![随机森林+网格搜索的提交结果](https://liweiwei1419.github.io/images/kaggle/titanic/随机森林+网格搜索的提交结果.png)
 
 此外，还要还看到，在训练数据集上的得分是：$0.815$，在测试数据集上的得分是：$0.804$，说明泛化性能还不错。另外，使用未调参的 XGBoost 也得到了同样的准确率，同样可以进行网格搜索，因为我对 XGBoost 的参数不太熟悉，在这里就略过了，请大家指教。
 
-![使用 XGBoost 未调参也得到了同样的准确率](https://upload-images.jianshu.io/upload_images/414598-564dc347fec87f9b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+![使用 XGBoost 未调参也得到了同样的准确率](https://liweiwei1419.github.io/images/kaggle/titanic/使用 XGBoost 未调参也得到了同样的准确率.png)
 
 ## 总结
 
-+ 在 Leaderboard 上，有人公开了得分为 $1.0$ 的[方案](https://www.kaggle.com/tarunpaparaju/how-top-lb-got-their-score-use-titanic-to-learn)，告诉我们其实有些得分是“作弊”来的，我们泰坦尼克号幸存者问题其实不太适合用作模型训练，得分在 $0.8$ 上下就已经可以了，没有必要再继续优化，不必在上面多花时间；
++ 在 Leaderboard 上，有人公开了得分为 $1.0$ 的[方案](https://www.kaggle.com/tarunpaparaju/how-top-lb-got-their-score-use-titanic-to-learn)，告诉我们其实有些得分是“作弊”来的，泰坦尼克号幸存者问题其实不太适合用作模型训练，得分在 $0.8$ 上下就已经可以了，没有必要再继续优化，不必在上面多花时间；
 + 多在 Kaggle 的 Kernels 和 Discussion 区查看别人提供的代码，说不定可以为自己今后要解决的问题提供思路；
 + 我还试过使用神经网络训练，但是泛化性能较差，这是因为数据太少。

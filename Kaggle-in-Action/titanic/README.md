@@ -37,7 +37,7 @@ Kaggle 上的竞赛和数据来自科研机构和大型企业，随着 Kaggle �
 | 8    | Ticket      | 船票号码                             | 离散型 | 是一串文字           |
 | 9    | Fare        | 票价                                 | 连续型 | 浮点数               |
 | 10   | Cabin       | 客舱                                 | 离散型 | 缺失值较多           |
-| 11   | Embarked    | 登船港口                             | 离散型 |                      |
+| 11   | Embarked    | 登船港口                             | 离散型 | 只有 2 个缺失值      |
 
 这一步我们还要关注的一点是**评价指标**。评价指标往往关系着我们在使用**网格搜索**的时候最优超参数的选择。先把下面的代码写上：
 
@@ -251,11 +251,11 @@ res.to_csv('../output/gridsearch_rf_2019_05_27.csv', index=False)
 ```
 提交结果：
 
-![随机森林+网格搜索的提交结果](https://liweiwei1419.github.io/images/kaggle/titanic/随机森林+网格搜索的提交结果.png)
+![随机森林+网格搜索的提交结果](https://liweiwei1419.github.io/images/kaggle/titanic/random-forest-grid-search.png)
 
 此外，还要还看到，在训练数据集上的得分是：$0.815$，在测试数据集上的得分是：$0.804$，说明泛化性能还不错。另外，使用未调参的 XGBoost 也得到了同样的准确率，同样可以进行网格搜索，因为我对 XGBoost 的参数不太熟悉，在这里就略过了，请大家指教。
 
-![使用 XGBoost 未调参也得到了同样的准确率](https://liweiwei1419.github.io/images/kaggle/titanic/使用 XGBoost 未调参也得到了同样的准确率.png)
+![使用 XGBoost 未调参也得到了同样的准确率](https://liweiwei1419.github.io/images/kaggle/titanic/xgboost-no-tuning.png)
 
 ## 总结
 
